@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-app
+  labels:
+    app: python-app
+spec:
+  replicas: 1 # Specifies that 3 Pods should be running
+  selector:
+    matchLabels:
+      app: python-app # Selects Pods with the label 'app: nginx'
+  template:
+    metadata:
+      labels:
+        app: python-app # Labels applied to the Pods created by this Deployment
+    spec:
+      containers:
+      - name: python-app # Name of the container
+        image: k3n3chukwu/python-app:v2 # Docker image to use for the container
+        ports:
+        - containerPort: 5000 # Port exposed by the container
